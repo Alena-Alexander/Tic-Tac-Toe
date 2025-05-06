@@ -112,7 +112,7 @@ classDiagram
         +_diag_win(symbol) bool
         +_col_win(symbol) bool
         +_row_win(symbol) bool
-        +is_full bool
+        +is_full(self) bool
         +get_empty_cells(self) List[Tuple[int, int]]
         +display(self) None
         +__str__(self) str
