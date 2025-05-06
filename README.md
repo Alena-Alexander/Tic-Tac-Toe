@@ -88,16 +88,13 @@ The find_best_move function which return a tuple containing to integers aka the 
 score for the AI if it results in a win.
 
 ## The GUI
-The GUI is a 3 by 3 Graphical Grid that actually represents the Gameboard it includes buttons\
-that when pressed a symbol is added to them and a reset button to reset the Gameboard whenever,\
-and an exit button to terminate the board
-
-
-
+The GUI is a 3 by 3 Graphical Grid that actually represents the Gameboard it\
+includes buttons that when pressed a symbol is added to them and a reset button\
+to reset the Gameboard whenever, and an exit button to terminate the board.
 
 ```mermaid
 ---
-Tic-Tac-Toe Minmax Algorithm
+Tic-Tac-Toe Minimax Algorithm
 ---
 classDiagram
     class GameBoard {
