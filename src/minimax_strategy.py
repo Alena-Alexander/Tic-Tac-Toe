@@ -179,21 +179,23 @@ class MinimaxStrategy(MoveStrategy):
             # Assigns best score to the highest positive int
             best_score = float("inf")
             winner_player = None
+
             # Iterates through each cell(tuple) in the list of empty cells
             for cell in board.get_empty_cells():
+
                 # log.info("Minimizing is playing...")
                 # Decomposes each cell
                 row, col = cell
 
 
                 board.make_move(row, col, player.symbol)
-                log.info(board)
+
                 score, winner_player = self.minimax(board, depth + 1, True, player, opponent)
 
 
                 # Undoes the move made by the player
                 board.game_board[row][col] = ""
-                log.info(board)
+
 
                 # Chooses the best score
                 best_score = min(best_score, score)
