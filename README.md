@@ -102,39 +102,66 @@ classDiagram
         +self
         
         %% Methods
-        +__init__(self)
-        +make_move(row, col, symbol) Tuple[int, str]
-        +is_winner(symbol) bool
-        +_anti_diag_win(symbol) bool
-        +_diag_win(symbol) bool
-        +_col_win(symbol) bool
-        +_row_win(symbol) bool
+        +make_move(row: int, col: int, symbol: String) Tuple[int, String]
+        +is_winner(symbol: String) bool
+        +_anti_diag_win(symbol: String) bool
+        +_diag_win(symbol: String) bool
+        +_col_win(symbol: String) bool
+        +_row_win(symbol: String) bool
         +is_full(self) bool
         +get_empty_cells(self) List[Tuple[int, int]]
         +display(self) None
-        +__str__(self) str
+        +__str__(self) String
     }
     
     class Player {
+        +String symbol
         
+        +__str__(self) String
+        +__dict__(self) Dict
     }
+    
     class HumanPlayer {
+        +String symbol
         
+        +make_move(board: GameBoard, row: int, col: int) Tuple[bool, String]
     }
+    
     class AIPlayer {
+        +String symbol
+        +MoveStrategy strategy
         
+        +find_best_move(board: GameBoard) Tuple[int, int]
     }
+    
     class MoveStrategy {
         <<abstract>>
+        +find_best_move(board: GameBoard, player: Player)  Tuple[int, int]
     }
+    
     class MinimaxStrategy {
-        
+        +find_best_move(board: GameBoard, player: Player)  Tuple[int, int]
+        +minimax(board: GameBoard, depth: int, is_maximizing_turn: bool, player: Player, opponent: Player) Tuple[int, Union[Player, None]]
     }
+    
     class GameController {
+        +HumanPlayer human
+        +AIPlayer ai
+        +GameBoard board
         
+        +switch_player(self) None
+        +check_game_over(self) Tuple[bool, String]
+        +find_best_ai_move(self)
     }
+    
     class TicTacToeGUI {
+        +GameController controller
         
+        +setup_ui(self) None
+        +button_click(self, row: int, col: int, player: Player) None
+        +show_result(self) None
+        +reset_gameboard(self)
+        +run(self) None
     }
     
     note for Gameboard "Manages the 3x3 board state"
