@@ -113,7 +113,7 @@ Here’s an exhaustive Mermaid diagram showing the complete game tree for the 1x
 
 ```mermaid
 graph TD
-    A[Board: [_, _, _]<br>Turn: X<br>Depth: 0] -->|X in 0| B[Board: [X, _, _]<br>Turn: O<br>Depth: 1]
+    A [Board: [_, _, _]<br>Turn: X<br>Depth: 0] -->|X in 0| B[Board: [X, _, _]<br>Turn: O<br>Depth: 1]
     A -->|X in 1| C[Board: [_, X, _]<br>Turn: O<br>Depth: 1]
     A -->|X in 2| D[Board: [_, _, X]<br>Turn: O<br>Depth: 1]
     

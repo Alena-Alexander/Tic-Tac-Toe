@@ -186,3 +186,45 @@ classDiagram
     GameController o--> GameBoard
     TicTacToeGUI o--> GameController
 ```
+
+# Graph Flowchart of Minimax 
+
+```mermaid
+---
+title: 1x3 Minimax Board
+---
+
+    flowchart TD
+        A("Board: [_, _, _,] <br> Turn: X <br> Depth: 0") -->  |X in 0| B("Board: [X, _, _] <br> Turn: O <br> Depth: 1")
+        A --> |X in 1| C("Board: [_, X, _] <br> Turn: O <br> Depth: 1")
+        A --> |X in 2| D("Board: [_, _, X] <br> Turn: O <br> Depth: 1")
+        
+        B --> |O in 1| E("Board: [X, O, _] <br> Turn: X <br> Depth: 2")
+        B --> |O in 2| F("Board: [X, _, O] <br> Turn: X <br> Depth: 2")
+        
+        C --> |O in 0| G("Board: [O, X, _] <br> Turn: X <br> Depth: 2")
+        C --> |O in 2| H("Board: [_, X, O] <br> Turn: X <br> Depth: 2")
+        
+        D --> |O in 0| I("Board: [O, _, X] <br> Turn: X <br> Depth: 2")
+        D --> |O in 1| J("Board: [_, O, X] <br> Turn: X <br> Depth: 2")
+        
+        E --> K("Board: [X, O, X] <br>Game over<br> Depth: 3<br>Score: 0<br>(Draw!)")
+        
+        F --> L("Board: [X, X, O] <br>Game over<br> Depth: 3<br>Score: 10 - 3 = 7<br>(X Wins)")
+        
+        G --> M("Board: [O, X, X] <br>Game over<br> Depth: 3<br>Score: 10 - 3 = 7<br>(X Wins)")
+        
+        H --> N("Board: [X, X, O] <br>Game over<br> Depth: 3<br>Score: 10 - 3 = 7<br>(X Wins)")
+        
+        I --> O("Board: [O, X, X] <br>Game over<br> Depth: 3<br>Score: 10 - 3 = 7<br>(X Wins)")
+        
+        J --> P("Board: [X, O, X] <br>Game over<br> Depth: 3<br>Score: 0<br>(Draw!)")
+        
+        K --> Q("Min: 0")
+        L --> R("Max: 7")
+        M --> S("Max: 7")
+        
+        N --> T("Max: 7")
+        O --> U("Max: 7")
+        P --> V("Min: 0")
+```
