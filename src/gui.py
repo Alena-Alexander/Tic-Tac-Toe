@@ -13,6 +13,7 @@
 12. Switch player again and the human player has to click a button
 13. The game repeats until a winner is found or it's a draw
 """
+import datetime
 
 # File: gui.py
 from PyQt6.QtCore import Qt
@@ -29,6 +30,7 @@ from src.minimax_strategy import MinimaxStrategy
 from src.game_board import GameBoard
 from src.logger import getLogger
 from src.player import Player
+from dataclasses import dataclass
 
 log = getLogger(__name__)
 
@@ -93,7 +95,6 @@ class TicTacToeGUI(QMainWindow):
 
                 # Add button to button container
                 self.button_container[r][c] = button
-
 
         # Set the fixed size for the Label
         self.label.setText("")
@@ -168,7 +169,6 @@ class TicTacToeGUI(QMainWindow):
         if button.text() != "" and self.controller.board.game_board[row][col] != "":
             self.label.setText("Try again!")
 
-
             # Return None
             return None
 
@@ -182,7 +182,6 @@ class TicTacToeGUI(QMainWindow):
             self.controller.board.make_move(row, col, player.symbol)
             button.setText(player.symbol)
             self.show()
-
 
         # TODO: step 3:
         #   Check if the last move made was a winning move;
@@ -204,7 +203,6 @@ class TicTacToeGUI(QMainWindow):
             self.controller.switch_player()
             player = self.controller.current_player
 
-
         # TODO: step 4:
         #   Find the best move for the AI player using the
         #   game controller class and make a move on both the
@@ -213,14 +211,12 @@ class TicTacToeGUI(QMainWindow):
         # Get the row and col of the best move
         row, col = self.controller.find_best_ai_move()
 
-
         # Retrieves a button from the button container
         button: QPushButton = self.button_container[row][col]
 
         # If button cell on GUI or game board != "" display a message the says "Try again!"
         if button.text() != "" and self.controller.board.game_board[row][col] != "":
             self.label.setText("Try again!")
-
 
             # Return None
             return None
@@ -232,13 +228,12 @@ class TicTacToeGUI(QMainWindow):
             button.setText(player.symbol)
             self.show()
 
-
-        # TODO: step 5:
-        #   Check if the last move made was a winning move;
-        #   If it is a winning move then display the message and
-        #   return None to stop executing the code that follows below.
-        #   Else continue to switch to the Human player and return None,
-        #   So that the user can pick another cell.
+            # TODO: step 5:
+            #   Check if the last move made was a winning move;
+            #   If it is a winning move then display the message and
+            #   return None to stop executing the code that follows below.
+            #   Else continue to switch to the Human player and return None,
+            #   So that the user can pick another cell.
 
             # Passes the tuple containing a boolean and a string to the variables
             # is_over, result_message
@@ -254,8 +249,6 @@ class TicTacToeGUI(QMainWindow):
                 return None
             else:
                 self.controller.switch_player()
-                player = self.controller.current_player
-
 
     def show_result(self) -> None:
         """
@@ -271,13 +264,11 @@ class TicTacToeGUI(QMainWindow):
         # Kill two birds with one stone!
         for r in range(3):
             for c in range(3):
-
                 # Resets the gui game board
                 button: QPushButton = self.button_container[r][c]
                 button.setText("")
                 # Resets the game board in the GameBoard class
                 self.controller.board.game_board[r][c] = ""
-
 
     def run(self) -> None:
         """Start the GUI application."""
@@ -289,3 +280,29 @@ class TicTacToeGUI(QMainWindow):
 
         # Starts an event loop
         sys.exit(self.app.exec())
+
+
+#################################################
+@dataclass
+class Person:
+    """
+    Some example class.
+
+    Attributes:
+        name (str): person's name
+        age (int): person's age
+        dob (date): person's dob
+    """
+    name: str
+    age: int
+    dob: datetime.date
+
+
+#################################################
+
+
+if __name__ == "__main__":
+    person = Person("John", 25, datetime.date.fromisoformat("2025-01-03"))
+    print(person)
+
+
