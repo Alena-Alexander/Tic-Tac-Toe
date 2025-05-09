@@ -286,7 +286,7 @@ sequenceDiagram
     Ctrl-)Board: The Game checks if there's a winner
     Board-)Ctrl: There's no winner yet, nor is there a tie
     Ctrl-)AI: The AI is the current player
-    AI-)Ctrl: The AI finds the best move using minimax
+    AI-)Strat: The AI finds the best move using minimax
     Strat-)Board: Minmax is evaluated
     Board-)Strat: A best score is determined
     Board-)AI: A move is made by the AI
