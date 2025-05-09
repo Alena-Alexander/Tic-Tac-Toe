@@ -269,3 +269,35 @@ flowchart TD
     D --> L("col 1: ' '")
     D --> M("col 2: ' '")
 ```
+
+## Here's a visual representation of the Flow of the Game
+
+```mermaid
+sequenceDiagram
+    participant GUI as TicTacToeGUI
+    participant Ctrl as GameController
+    participant Human as HumanPlayer
+    participant AI as AIPlayer
+    participant Board as GameBoard
+    participant Strat as MinimaxStrategy
+    
+    GUI-)Human: The Human clicks a button on the GUI
+    Board-)Human: A move is made 
+    Ctrl-)Board: The Game checks if there's a winner
+    Board-)Ctrl: There's no winner yet, nor is there a tie
+    Ctrl-)AI: The AI is the current player
+    AI-)Ctrl: The AI finds the best move using minimax
+    Strat-)Board: Minmax is evaluated
+    Board-)Strat: A best score is determined
+    Board-)AI: A move is made by the AI
+    GUI-)Board: The Board is updated
+    Ctrl-)Board: The Game checks if there's a winner
+    Ctrl-)Board: The AI wins
+    GUI-)Ctrl: Shows the result of the Game(win, lose, or draw)
+    
+    
+    
+    
+    
+
+```
