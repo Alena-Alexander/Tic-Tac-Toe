@@ -99,7 +99,7 @@ Tic-Tac-Toe Minimax Algorithm
 classDiagram
     class GameBoard {
         %% Attributes
-        +self
+        +List[List[String]]game_board
         
         %% Methods
         +make_move(row: int, col: int, symbol: String) Tuple[int, String]
@@ -117,8 +117,8 @@ classDiagram
     class Player {
         +String symbol
         
-        +__str__(self) String
-        +__dict__(self) Dict
+        +__str__() String
+        +__dict__() Dict
     }
     
     class HumanPlayer {
@@ -148,20 +148,25 @@ classDiagram
         +HumanPlayer human
         +AIPlayer ai
         +GameBoard board
+        +HumanPlayer current_player
         
-        +switch_player(self) None
-        +check_game_over(self) Tuple[bool, String]
-        +find_best_ai_move(self)
+        +switch_player() None
+        +check_game_over() Tuple[bool, String]
+        +find_best_ai_move()
     }
     
     class TicTacToeGUI {
         +GameController controller
+        +Union[QApplication, QApplication] app
+        +Union[QGridLayout, QGridLayout]layout
+        +List[List[QPushButton, QPushButton]] button_container
+        +Union[QLabel, QLabel] label
         
-        +setup_ui(self) None
-        +button_click(self, row: int, col: int, player: Player) None
-        +show_result(self) None
-        +reset_gameboard(self)
-        +run(self) None
+        +setup_ui() None
+        +button_click(row: int, col: int, player: Player) None
+        +show_result() None
+        +reset_gameboard() None
+        +run() None
     }
     
     note for Gameboard "Manages the 3x3 board state"
@@ -227,4 +232,40 @@ title: 1x3 Minimax Board
         N --> T("Max: 7")
         O --> U("Max: 7")
         P --> V("Min: 0")
+```
+
+## The 2D Gameboard 
+This a layout representation of the 2D Gameboard:
+
+```
+  [
+    [' ', ' ', ' '],  # Row 0
+    [' ', ' ', ' '],  # Row 1
+    [' ', ' ', ' ']   # Row 2
+  ]
+```
+
+This Gameboard is made up of 3 rows with 3 columns contained in each row. Each cell in the Gameboard is
+represented by two indexes [row][col]. Rows cannot be changed but Columns can.
+
+## Here's a visual representation of it
+
+```mermaid
+---
+title: The 2D Gameboard
+---
+
+graph TD
+    A("board") --> B("row 0: [' ', ' ', ' ']")
+    A --> C("row 1: [' ', ' ', ' ']")
+    A --> D("row 2: [' ', ' ', ' ']")
+    B --> E("col 0: ' '")
+    B --> F("col 1: ' '")
+    B --> G("col 2: ' '")
+    C --> H("col 0: ' '")
+    C --> I("col 1: ' '")
+    C --> J("col 2: ' '")
+    D --> K("col 0: ' '")
+    D --> L("col 1: ' '")
+    D --> M("col 2: ' '")
 ```
