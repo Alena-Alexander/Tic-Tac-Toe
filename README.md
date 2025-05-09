@@ -255,8 +255,8 @@ represented by two indexes [row][col]. Rows cannot be changed but Columns can.
 title: The 2D Gameboard
 ---
 
-graph TD
-    A("board") --> B("row 0: [' ', ' ', ' ']")
+flowchart TD
+    A("Gameboard") --> B("row 0: [' ', ' ', ' ']")
     A --> C("row 1: [' ', ' ', ' ']")
     A --> D("row 2: [' ', ' ', ' ']")
     B --> E("col 0: ' '")
