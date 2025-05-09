@@ -245,7 +245,7 @@ This a layout representation of the 2D Gameboard:
   ]
 ```
 
-This Gameboard is made up of 3 rows with 3 columns contained in each row. Each cell in the Gameboard is
+This Gameboard is made up of 3 rows with 3 columns contained in each row. Each cell in the Gameboard is\
 represented by two indexes [row][col]. Rows cannot be changed but Columns can.
 
 ## Here's a visual representation of it
